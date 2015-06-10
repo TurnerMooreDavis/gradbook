@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'dashboard/teacher'
+
+  get 'dashboard/student'
+
+  get 'dashboard/parent'
+
+  get 'sessions/login'
+
+  get 'login' =>'sessions#login'
+
+  post 'sessions/login'
+
+  get 'sessions/logout'
+
   resources :parents
   resources :students
   resources :assignments

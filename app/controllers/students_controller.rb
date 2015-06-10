@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :check_teacher
   before_action :set_student, only: [:show, :edit, :update, :destroy]
 
   # GET /students

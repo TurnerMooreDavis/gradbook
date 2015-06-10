@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p id="notice"><%= notice %></p>
+
 
 <%= yield %>
 
 </body>
+<footer>
+  <%= link_to 'Logout', sessions_logout_path %>
+</footer>
 </html>
