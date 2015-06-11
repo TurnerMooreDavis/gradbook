@@ -1,2 +1,35 @@
-<h1>Dashboard#student</h1>
-<p>Find me in app/views/dashboard/student.html.erb</p>
+<h1>Welcome <%= @student.name %></h1>
+<div class = "modern">
+<div id="container" class = "main-container">
+  <% @student.courses.each do |course| %>
+    <% sum_grades = 0 %>
+      <div class = "row">
+        <div class = "col-md-12"><h1>Course: <%= course.name %></h1></div>
+      </div>
+      <div class = "row">
+        <div class = "col-md-4"><h3>Name</h3></div>
+        <div class = "col-md-1"><h3>Grade</h3></div>
+        <div class = "col-md-1"><h3>Percent</h3></div>
+        <div class = "col-md-2"><h3>Percent of Final Grade</h3></div>
+      </div>
+      <div class = "scroller" margin-right = "-100px">
+      <% course.assignments.each do |assignment| %>
+        <% if assignment.student_id == @student.id %>
+          <div class = "row">
+            <div class = "col-md-4"><%= assignment.name %></div>
+            <div class = "col-md-1"><%= assignment.grade %></div>
+            <div class = "col-md-1"><%= assignment.percent_of_total %></div>
+            <div class = "col-md-2"><%= assignment.percent_of_final %></div>
+            <% sum_grades += assignment.percent_of_final %>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+      <div class = "row">
+        <div class = "col-md-4"><h3>Total</h3></div>
+        <div class = "col-md-2"></div>
+        <div class = "col-md-2"><h3><%= sum_grades %>/100</h3></div>
+      </div>
+  <% end %>
+</div>
+</div>
